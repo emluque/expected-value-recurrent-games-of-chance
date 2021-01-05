@@ -1,0 +1,119 @@
+\documentclass[12pt,reqno]{amsart}
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{times}
+\usepackage{graphicx}
+\vfuzz=2pt
+
+% some "funny lines" referred to later:
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+{ \theoremstyle{remark}\newtheorem*{remark}{Remark} }
+
+\newcommand{\class}{MATH 613E: Topics in Analytic Number Theory}
+\newcommand{\population}[2]{There are #2 students giving lectures, and also #2 students writing up notes from lectures. Everybody in the class is very #1 about this.}
+\newcommand{\tex}{{\tt .tex}}
+
+\begin{document}
+
+\title[On the expected value of recurrent games of chance]{On the expected value of recurrent games of chance}
+% or if you want, simply \title{Title of the article}
+\author{Emiliano Martínez Luque}
+\email{martinezluque@gmail.com}
+\maketitle
+
+\begin{abstract}
+We define a recurrent game of chance, then provide formulas for calculating it's expected value
+\end{abstract}
+
+\section{Introduction}
+\label{first section}
+
+Recurrent game of chance definition.
+
+A betting game that starting with an original bet and a set of probabilities associated with differente payoffs recursively applies this game conditions to the result of each succesive step of the game.
+
+x\textsubscript{0} initial ammount
+
+\section{simple example}
+
+x\textsubscript{0} is the original ammount.
+
+Two possible outcames for each step with equal probability defined as having the current ammount multiplied by one of two coefficients (b, b') with equal probability.
+
+p(b) = p(b') = 0.5
+
+b \textgreater b' \textgreater 0
+
+
+
+Result of the recurrence at infinity:
+
+if b' \textgreater 1/b tends to infinity
+
+if b' \textless 1/b tends to 0
+
+if b'= 1/b tends to x\textsubscript{0}
+
+
+
+Explain result geometrically--
+
+Rant about b' = 1/b is the exact definition of a fair game.. go on about pascal triangle and binomial distribution
+
+\section{multiple outcames with equal probability}
+
+m number of possible outcames, each with same probability and associated with a coefficient b\textsubscript{1} to b\textsubscript{m}
+
+
+
+Result of the recurrence at infinity:
+
+
+
+Let's define s = $\prod_{i=1}^{m} b_{i}$
+
+if s \textgreater 1 tends to infinity
+
+if s \textless 1 tends to 0
+
+if s = 1 tends to x\textsubscript{0}
+
+
+Prove algebraically.
+
+\section{multiple outcames each with it's own probability}
+
+m number of possible outcames, each with it's own coefficient b\textsubscript{i} and it's own probability p\textsubscript{i}
+
+Result of the recurrence at infinity:
+
+Let's define s = $\prod_{i=1}^{m} mp_{i}b_{i}$
+
+
+
+if s \textgreater 1 tends to infinity
+
+if s \textless 1 tends to 0
+
+if s = 1 tends to x\textsubscript{0}
+
+
+
+Examine distributions of probabilities.. this one is harsher.. to prove
+
+
+
+Define expected value of recurrence r\textsubscript{n}
+
+r\textsubscript{0} = x\textsubscript{0}
+
+r\textsubscript{n} = sr\textsubscript{n-1}
+
+Explain based on the definition of the common expected value formula
+
+
+\end{document}
