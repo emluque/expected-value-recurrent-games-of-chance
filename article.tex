@@ -79,36 +79,57 @@ Based on this conditions, we can conclude that this is a losing game for the bet
 
 \section{General result for two different payoffs with same probability}
 
-Let's generalize the game presented before, we define:
+Let's generalize the game presented before which we will call G\textsubscript{*}, we define:
 
 x\textsubscript{0} is the original amount.
 
-And positive b, b' as the two possible outcomes with equal probabilities P(b) = P(b') = 0.5\%. 
+x\textsubscript{n} as the value of the game in step n.
 
-Also we define b to be the winning outcome (meaning it increases the amount at play) and b' the losing outcome (meaning it decreases the amount). So another condition is that b \textgreater 1 \textgreater b' \textgreater 0.
+We define e\textsubscript{w} and e\textsubscript{l} as two posible events that can happen in any step of the recurrence with equal probability.
 
-Sidenote (this should be a commentary at the bottom): If b \textgreater b' \textgreater 1 or 1 \textgreater b \textgreater b' there is nothing to prove or even reason about. If b \textgreater b' \textgreater 1 any outcome is positive for the betting party and if 1 \textgreater b \textgreater b' \textgreater 0 any outcome is negative. 
+If event e\textsubscript{w} happens at step n we calculate the value of  recurrence at step n as:
 
+x\textsubscript{n} = b\textsubscript{w} * x\textsubscript{n-1}
 
-The expected value of the recurrence x\textsubscript{n} will be:
+If event e\textsubscript{l} as: 
 
-a. If b' \textgreater 1/b it will tend to infinity.
+x\textsubscript{n} = b\textsubscript{l} * x\textsubscript{n-1}
 
-b. If b' \textless 1/b it will tend to 0.
+Both events have equal probabilities of ocurring in any step, so P(e\textsubscript{w}) = P(e\textsubscript{l}) = 0.5\%. 
 
-c. If b'= 1/b it will follow a binomial distribution around x\textsubscript{0}.
+We define e\textsubscript{w} to be the winning outcome of the step (meaning it increases the amount at play) and e\textsubscript{l} to be the losing outcome (meaning it decreases the amount). 
 
-To start thinking about this, we`ll think about case c through the following exercise. 
+We also define that the game is played over the original amount and no debt can be incurred in the game.
 
-Let's imagine a game on the number line, we are starting on 0, and then when we flip a fair coin, if it comes heads (an event we will call a) we move one full positive integer to the right and if it comes tails (an event we will call a') we move a full positive integer to the left.
+So another condition is that b\textsubscript{w} \textgreater 1 \textgreater b\textsubscript{l} \textgreater 0.
 
-Arithmetically, we start in 0, if we drew a we sum 1, if we drew a' we sum -1.
+Sidenote (this should be a commentary at the bottom): If b\textsubscript{w} \textgreater b\textsubscript{l} \textgreater 1 or 1 \textgreater b\textsubscript{w} \textgreater b\textsubscript{l} there is nothing to prove or even reason about. If b\textsubscript{w} \textgreater b\textsubscript{l} \textgreater 1 any outcome is positive for the betting party and if 1 \textgreater b\textsubscript{w} \textgreater b\textsubscript{l} \textgreater 0 any outcome is negative. 
 
-We will represent any sequence of events by strings (sequence of characters) of the alphabet \{a, a'\}. 
+It is clear based on the definitions that the recurrence after n steps will be of the form.
+
+x\textsubscript{n} = x\textsubscript{0} * b\textsubscript{w}\textsuperscript{p} * b\textsubscript{l}\textsuperscript{q}
+
+Where p+q = n.
+
+Based on this conditions the expected value of the recurrence x\textsubscript{n} will be:
+
+a. If b\textsubscript{l} \textgreater 1/b\textsubscript{w} it will tend to infinity.
+
+b. If b\textsubscript{l} \textless 1/b\textsubscript{w} it will tend to 0.
+
+c. If b\textsubscript{l} = 1/b\textsubscript{w} it will follow a binomial distribution around x\textsubscript{0}, the characteristics of which we will discuss next.
+
+To start thinking about this, we`ll do the following exercise. 
+
+Let's imagine a game on the number line, we are starting on 0, and then we flip a fair coin, if it comes heads (an event we will call a\textsubscript{w}) we move one full positive integer to the right and if it comes tails (an event we will call a\textsubscript{l}) we move a full positive integer to the left. We repeat this process n times.
+
+Arithmetically, we start in 0, if a\textsubscript{w} we sum 1, if a\textsubscript{l} we sum -1.
+
+We will represent any sequence of events by strings (sequence of characters) of the alphabet \{a\textsubscript{w}, a\textsubscript{l}\}. 
 
 We will call this game G\textsubscript{+}.
 
-Given a strings x, we will represent by G\textsubscript{+}(x) the value of the string x in the game G\textsubscript{+}
+Given a string x of n events, we will represent by G\textsubscript{+}(x) the value of the string x in the game G\textsubscript{+}.
 
 We will also define the value of the empty string (which we will notates as "") to be 0·
 
@@ -116,43 +137,42 @@ So based on our definition of the game:
 
 G\textsubscript{+}("") = 0
 
-G\textsubscript{+}(a) = +1
-G\textsubscript{+}(a') = -1
+G\textsubscript{+}(a\textsubscript{w}) = +1
+G\textsubscript{+}(a\textsubscript{l}) = -1
 
+And given a character k and a substring l:
 
-And given a character x and a substring l:
+G\textsubscript{+}(kl) = G\textsubscript{+}(k) + G\textsubscript{+}(l)
 
-G\textsubscript{+}(xl) = G\textsubscript{+}(x) + G\textsubscript{+}(l)
-
-Now to calculate the value of G\textsubscript{+}(x) based on our definitions, we start at 0 and then add +1 for every character a and -1 for every character a'.
+Now to calculate the value of G\textsubscript{+}(x) for any string x based on our definitions, we start at 0 and then add + 1 for every character a\textsubscript{w} and -1 for every character a\textsubscript{l}.
 
 For example:
 
-G\textsubscript{+}(aaa) = 0 + 1 + 1 + 1 = 3
+G\textsubscript{+}(a\textsubscript{w}a\textsubscript{w}a\textsubscript{w}) = 0 + 1 + 1 + 1 = 3
 
-G\textsubscript{+}(aa'a) = 0 + 1 -1 + 1 = 1
+G\textsubscript{+}(a\textsubscript{w}a\textsubscript{l}a\textsubscript{w}) = 0 + 1 -1 + 1 = 1
 
-G\textsubscript{+}(a'a'aa) = 0 -1 -1 + 1 + 1 = 0
-
-
-It is immediately clear that in any sequence of events any pair of the characters a and a' will annulate themselves. 
-
-G\textsubscript{+}(aa') = G\textsubscript{+}(a'a) = G\textsubscript{+}("") = 0
+G\textsubscript{+}(a\textsubscript{l}a\textsubscript{l}a\textsubscript{w}a\textsubscript{w}) = 0 -1 -1 + 1 + 1 = 0
 
 
-Also due to the properties of addition, in any sequence of events the possible outcome in terms of the result will amount to just calculating the number of "a"s or "a'"s left after taking out the pairs of "a" and "a'"s in the string.
+It is immediately clear that in any sequence of events any pair of the characters a\textsubscript{w} and a\textsubscript{l} will annulate themselves. 
+
+G\textsubscript{+}(a\textsubscript{w}a\textsubscript{l}) = G\textsubscript{+}(a\textsubscript{l}a\textsubscript{w}) = G\textsubscript{+}("") = 0
+
+
+Also due to the properties of addition, in any sequence of events the possible outcome in terms of the result will amount to just calculating the number of a\textsubscript{w}s or a\textsubscript{l}s left after taking out the pairs of a\textsubscript{w} and a\textsubscript{l}"s in the string.
 
 Examples of calculating the value of the game: 
 
-G\textsubscript{+}(aa'aa') = G\textsubscript{+}("") = 0
+G\textsubscript{+}(a\textsubscript{w}a\textsubscript{l}a\textsubscript{w}a\textsubscript{l}) = G\textsubscript{+}("") = 0
 
-G\textsubscript{+}(a'a'aa) = G\textsubscript{+}("") = 0
+G\textsubscript{+}(a\textsubscript{l}a\textsubscript{l}a\textsubscript{w}a\textsubscript{w}) = G\textsubscript{+}("") = 0
 
-G\textsubscript{+}(aaaa') = G\textsubscript{+}(aa) =  2
+G\textsubscript{+}(a\textsubscript{w}a\textsubscript{w}a\textsubscript{w}a\textsubscript{l}) = G\textsubscript{+}(a\textsubscript{w}a\textsubscript{w}) =  2
 
-G\textsubscript{+}(aa'aa) = G\textsubscript{+}(aa) = 2
+G\textsubscript{+}(a\textsubscript{w}a\textsubscript{w}a\textsubscript{l}a\textsubscript{w}) = G\textsubscript{+}(a\textsubscript{w}a\textsubscript{w}) = 2
 
-G\textsubscript{+}(a'a'a'a) = G\textsubscript{+}(a'a') = -2
+G\textsubscript{+}(a\textsubscript{l}a\textsubscript{l}a\textsubscript{l}a\textsubscript{w}) = G\textsubscript{+}(a\textsubscript{l}a\textsubscript{l}) = -2
 
 An interesting thing to notice first is that for any string of size n, if n is even then the results will be even and if n is odd then the result will be odd too.
 
@@ -161,47 +181,41 @@ EXPLAINS HOW EVERYTHING BEFORE RELATES TO PASCAL TRIANGLE
 THEN DO NEXT
 
 
-How is this related to case c in our original game (which we will call G\textsubscript{*})?
+How is this related to case c in our original game G\textsubscript{*}?
+
 
 Let's reformulate our original game G\textsubscript{*},  in terms of this new one G\textsubscript{+}.
 
-First if b' = 1/b which means that b' = b\textsuperscript{-1}.
+We could also represent any sequence of events in G\textsubscript(*) as a string from alphabet \{b\textsubscript{w}, b\textsubscript{l}\} for representing events e\textsubscript{w} and e\textsubscript{l} respectively.
 
-Let's say that we start with an amount x\textsubscript{0} and when we drew a, we multiply our current x by b and if we drew a' we multiply by b\textsuperscript{-1}.
+So if we were to calculate a sequence of events in a game of G\textsubscript{*} we would do the following:
 
-So any strings of {a, a') becomes an equivalent sequence of {b, b\textsuperscript{-1} but in G\textsubscript{*} we are multiplying instead of summing. For clarity we'll represent multiplication with *.
+G\textsubscript{*}("") = x\textsubscript{0}
 
-Examples: 
+G\textsubscript{x}(b\textsubscript{w}) = x\textsubscript{0} * b\textsubscript{w}
 
-"aa'aa'' in G\textsubscript{+} becomes
+G\textsubscript{x}(b\textsubscript{l}) = x\textsubscript{0} * b\textsubscript{l}
 
-"bb'bb'" = b * 1/b * b * 1/b = 1 = b\textsuperscript{0}
+G\textsubscript{x}(b\textsubscript{w}b\textsubscript{l}) = x\textsubscript{0} * b\textsubscript{w} * b\textsubscript{l}
 
-"aaaa'" in G\textsubscript{+} becomes
+... ETC.. EXPLAIN THIS BETTER..
 
-"bbbb'" = b * b * b * 1/b = b\textsuperscript{2}
+Now if b\textsubscript{l} = 1/b\textsubscript{w} means that b\textsubscript{l} = b\textsubscript{w}\textsuperscript{-1}.
 
-"aa'aa" in G\textsubscript{+} becomes
+EXPLAIN BELOW BETTER
 
-"bb'bb" = b*b'*b*b = b * 1/b * b * b = b\textsuperscript{2}
+It is evident that in this case the results of G\textsubscript{+} are equivalent to the exponentials of the results of G\textsubscript{*}.
 
-"a'a'a'a" in G\textsubscript{+}
+EXPLAIN HOW DISTRIBUTION ON G\textsubscript{+} relate to the distribution on G\textsubscript{*}.
 
-becomes b*b*b*b' = 1/b * 1/b * 1/b * b = b\textsuperscript{-2}
-
-It is evident that the results of G\textsubscript{+} are equivalent to the 
-exponentials of the results of G\textsubscript{*} by simple arithmetics.
-
------ This new game might not be a clear explanation... 
-
--- Rant about b' = 1/b is the exact definition of a fair game.. go on about pascal triangle and binomial distribution
+-- Rant about how is the exact definition of a fair game.. go on about pascal triangle and binomial distribution
 
 
 OTHER CASES
 
 HERE: This is the trick, and this is what I should be arriving at.
 
-if b' $\neq$ 1/b  $\implies$  b * b' = 1 + $\epsilon$ .
+if b\textsubscript{l} $\neq$ 1/b\textsubscript{w}  $\implies$  b\textsubscript{w} * b\textsubscript{l} = 1 + $\epsilon$ .
 
 explain what that means in terms of the expected value of the recurrence
 
