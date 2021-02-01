@@ -104,41 +104,64 @@ Let's imagine a game on the number line, we are starting on 0, and then when we 
 
 Arithmetically, we start in 0, if we drew a we sum 1, if we drew a' we sum -1.
 
-We will represent any sequence of events by strings of the alphabet \{a, a'\}. Strings will be enclosed by ".
+We will represent any sequence of events by strings (sequence of characters) of the alphabet \{a, a'\}. 
 
 We will call this game G\textsubscript{+}.
 
-Based on our definition, to calculate the value of the string in G\textsubscript{+} we start at 0 and then add +1 for every character a and -1 for every character a'.
+Given a strings x, we will represent by G\textsubscript{+}(x) the value of the string x in the game G\textsubscript{+}
+
+We will also define the value of the empty string (which we will notates as "") to be 0·
+
+So based on our definition of the game:
+
+G\textsubscript{+}("") = 0
+
+G\textsubscript{+}(a) = +1
+G\textsubscript{+}(a') = -1
+
+
+And given a character x and a substring l:
+
+G\textsubscript{+}(xl) = G\textsubscript{+}(x) + G\textsubscript{+}(l)
+
+Now to calculate the value of G\textsubscript{+}(x) based on our definitions, we start at 0 and then add +1 for every character a and -1 for every character a'.
 
 For example:
 
-"aaa" = 0 + 1 + 1 + 1 = 3
+G\textsubscript{+}(aaa) = 0 + 1 + 1 + 1 = 3
 
-"aa'a" = 0 + 1 -1 + 1 = 1
+G\textsubscript{+}(aa'a) = 0 + 1 -1 + 1 = 1
 
-"a'a'aa" = 0 -1 -1 + 1 + 1 = 0
+G\textsubscript{+}(a'a'aa) = 0 -1 -1 + 1 + 1 = 0
 
 
-And interesting thing is that in any sequence of events any pair of the characters a and a' will annulate themselves. So in any sequence of events the possible outcome in terms of the result will amount to just calculating the number of "a"s or "a'"s left after taking out the pairs of "a" and "a'"s in the string.
+It is immediately clear that in any sequence of events any pair of the characters a and a' will annulate themselves. 
 
-Examples, to calculate the value of the game we do: 
+G\textsubscript{+}(aa') = G\textsubscript{+}(a'a) = G\textsubscript{+}("") = 0
 
-"aa'aa'" = "" = 0
 
-"aaaa'" = "aa" =  2
+Also due to the properties of addition, in any sequence of events the possible outcome in terms of the result will amount to just calculating the number of "a"s or "a'"s left after taking out the pairs of "a" and "a'"s in the string.
 
-"aa'aa" = "aa" = 2
+Examples of calculating the value of the game: 
 
-"a'a'a'a" = "a'a'" = -2
+G\textsubscript{+}(aa'aa') = G\textsubscript{+}("") = 0
+
+G\textsubscript{+}(a'a'aa) = G\textsubscript{+}("") = 0
+
+G\textsubscript{+}(aaaa') = G\textsubscript{+}(aa) =  2
+
+G\textsubscript{+}(aa'aa) = G\textsubscript{+}(aa) = 2
+
+G\textsubscript{+}(a'a'a'a) = G\textsubscript{+}(a'a') = -2
 
 An interesting thing to notice first is that for any string of size n, if n is even then the results will be even and if n is odd then the result will be odd too.
 
-EXPLAINS HOW BEFORE RELATES TO PASCAL TRIANGLE
+EXPLAINS HOW EVERYTHING BEFORE RELATES TO PASCAL TRIANGLE
 
 THEN DO NEXT
 
 
-How is this related to case c in our original game (which we will call G\textsubscript{*}?
+How is this related to case c in our original game (which we will call G\textsubscript{*})?
 
 Let's reformulate our original game G\textsubscript{*},  in terms of this new one G\textsubscript{+}.
 
