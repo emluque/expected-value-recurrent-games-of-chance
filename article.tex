@@ -17,6 +17,7 @@
 \newcommand{\population}[2]{There are #2 students giving lectures, and also #2 students writing up notes from lectures. Everybody in the class is very #1 about this.}
 \newcommand{\tex}{{\tt .tex}}
 
+\setlength{\parskip}{1.4\baselineskip}
 \begin{document}
 
 \title[On the expected value of recurrent games of chance]{On the expected value of recurrent games of chance}
@@ -26,43 +27,144 @@
 \maketitle
 
 \begin{abstract}
-We define a recurrent game of chance, then provide formulas for calculating it's expected value
+We define a recurrent game of chance, then provide formulas for calculating it's expected value.
 \end{abstract}
 
-\section{Introduction}
+\section{Recurrent game of chance definition.}
 \label{first section}
 
-Recurrent game of chance definition.
 
-A betting game that starting with an original bet and a set of probabilities associated with differente payoffs recursively applies this game conditions to the result of each succesive step of the game.
+A betting game that starting with an original amount being bet, a set of probabilities associated with different payoffs, then recursively applies this game conditions to the result of each successive step of the game. 
 
-x\textsubscript{0} initial ammount
+What differentiates this type of game from the ones used in the regular formula of expected value is that in this type of game no new amount is added in the game, the bets are always recursively applied to the result of the each step of the game.
 
-\section{simple example}
+We could then consider two different types of this game, either the betting party can decide whether to continue the game after each successive step or the game is applied with a fixed number of steps.
 
-x\textsubscript{0} is the original ammount.
+\section{Simple Example}
 
-Two possible outcames for each step with equal probability defined as having the current ammount multiplied by one of two coefficients (b, b') with equal probability.
-
-p(b) = p(b') = 0.5
-
-b \textgreater b' \textgreater 0
+Let's present a simple example:
 
 
-
-Result of the recurrence at infinity:
-
-if b' \textgreater 1/b tends to infinity
-
-if b' \textless 1/b tends to 0
-
-if b'= 1/b tends to x\textsubscript{0}
+We start with an initial amount being bet of \$100 dollars. 
 
 
+And we will have the following game conditions.
 
-Explain result geometrically--
 
-Rant about b' = 1/b is the exact definition of a fair game.. go on about pascal triangle and binomial distribution
+We will be flipping a coin and it is assumed that the process of flipping the coin is fair and we have equal probability of getting either heads or tails.
+
+Now, if the coin lands on heads we increase the amount by 50\% and if it lands on tails we decrease the amount by 40\%.
+
+
+For clarity we define:
+
+x\textsubscript{0} as the initial amount
+
+x\textsubscript{n} as the amount after n steps of the game.
+
+b\textsubscript{h} as the coefficient we multiply the amount by if it lands on heads.
+
+P(h) as the probability of the coin landing on Heads. 
+
+In this example b\textsubscript{h} = 1.5, P(h) = 0.5
+
+b\textsubscript{t} as the coefficient we multiply the amount by if it lands on tails.
+
+P(t) as the probability of the coin landing on Heads. 
+
+In this example b\textsubscript{t} = 0.6, P(t) = 0.5
+
+Based on this conditions, we can conclude that this is a losing game for the betting party, and the rational decision when presented with this game is not to play the game. We will provide a proof and a general formula for this type of games in the following sections.
+
+
+\section{General result for two different payoffs with same probability}
+
+Let's generalize the game presented before, we define:
+
+x\textsubscript{0} is the original amount.
+
+And b, b' as the two possible outcomes with equal probabilities P(b) = P(b') = 0.5\%. 
+
+Also we define b to be the winning outcome (meaning it increases the amount at play) and b' the losing outcome (meaning it decreases the amount). So another condition is that b > 1 > b' > 0.
+
+Sidenote (this should be a commentary at the bottom): If b > b' > 1 or 1 > b > b' there is nothing to prove or even reason about. If b > b' > 1 any outcome is positive for the betting party and if 1 > b > b' any outcome is negative. 
+
+The expected value of the recurrence x\textsubscript{n} will be:
+
+a. If b' \textgreater 1/b it will tend to infinity.
+
+b. If b' \textless 1/b it will tend to 0.
+
+c. If b'= 1/b it will be x\textsubscript{0}.
+
+To start thinking about this, we`ll think about case c through the following exercise. 
+
+Let's imagine a game on the number line, we are starting on 0, and then when we flip a fair coin, if it comes heads (an event we will call a) we move one full positive integer to the right and if it comes tails (an event we will call a') we move a full positive integer to the left.
+
+Arithmetically, we start in 0, if we drew a we sum 1, if we drew a' we sum -1.
+
+And interesting thing is that in any sequence of events which we will represent with strings of the alphabet {a, a'}, any pair of a and a' on the sequence will anulate themselves by being equivalent to 0.
+
+So in any sequence of events the possible outcome in terms of the result will amount to just calculating the number of as or a's that result after taking out the pairs of aa's in the string.
+
+We will represent sequences of events with strings of the alphabet {a, a'} we will represent a string by enclosing it in ".
+
+Examples, to calculate the value of the game we do: 
+
+"aa'aa'" = 0 + 1 - 1 + 1 -1 = 0 
+
+"aaaa'" = "aa" =  2
+
+"aa'aa" = "aa" = 2
+
+"a'a'a'a" = "a'a'" = -2
+
+An interesting thing to notice first is that for any string of size n, if n is even then the results will be even and if n is odd then the result will be odd too.
+
+We will call this game G\textsubscript{+}.
+
+How is this related to case c in our original game (which we will call G\textsubscript{*}?
+
+Let's reformulate our original game G\textsubscript{*},  in terms of this new one G\textsubscript{+}.
+
+First if b' = 1/b which means that b' = b\textsuperscript{-1}.
+
+Let's say that we start with an amount x\textsubscript{0} and when we drew a, we multiply our current x by b and if we drew a' we multiply by b\textsuperscript{-1}.
+
+So any strings of {a, a') becomes an equivalent sequence of {b, b\textsuperscript{-1} but in G\textsubscript{*} we are multiplying instead of summing. For clarity we'll represent multiplication with *.
+
+Examples: 
+
+"aa'aa'' in G\textsubscript{+} becomes
+
+"bb'bb'" = b * 1/b * b * 1/b = 1 = b\textsuperscript{0}
+
+"aaaa'" in G\textsubscript{+} becomes
+
+"bbbb'" = b * b * b * 1/b = b\textsuperscript{2}
+
+"aa'aa" in G\textsubscript{+} becomes
+
+"bb'bb" = b*b'*b*b = b * 1/b * b * b = b\textsuperscript{2}
+
+"a'a'a'a" in G\textsubscript{+}
+
+becomes b*b*b*b' = 1/b * 1/b * 1/b * b = b\textsuperscript{-2}
+
+It is evident that the results of G\textsubscript{+} are equivalent to the 
+exponentials of G\textsubscript{*} by simple arithmetics.
+
+----- I don't think this new game is a clear explanation... 
+
+-- Rant about b' = 1/b is the exact definition of a fair game.. go on about pascal triangle and binomial distribution
+
+
+OTHER CASES
+
+Now if b' \neq 1/b  then  b * b' = 1 + \epsilon 
+
+explain what that means in terms of the expected value of the recurrence
+
 
 \section{multiple outcames with equal probability}
 
