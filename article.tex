@@ -83,11 +83,12 @@ Let's generalize the game presented before, we define:
 
 x\textsubscript{0} is the original amount.
 
-And b, b' as the two possible outcomes with equal probabilities P(b) = P(b') = 0.5\%. 
+And positive b, b' as the two possible outcomes with equal probabilities P(b) = P(b') = 0.5\%. 
 
-Also we define b to be the winning outcome (meaning it increases the amount at play) and b' the losing outcome (meaning it decreases the amount). So another condition is that b > 1 > b' > 0.
+Also we define b to be the winning outcome (meaning it increases the amount at play) and b' the losing outcome (meaning it decreases the amount). So another condition is that b \textgreater 1 \textgreater b' \textgreater 0.
 
-Sidenote (this should be a commentary at the bottom): If b > b' > 1 or 1 > b > b' there is nothing to prove or even reason about. If b > b' > 1 any outcome is positive for the betting party and if 1 > b > b' any outcome is negative. 
+Sidenote (this should be a commentary at the bottom): If b \textgreater b' \textgreater 1 or 1 \textgreater b \textgreater b' there is nothing to prove or even reason about. If b \textgreater b' \textgreater 1 any outcome is positive for the betting party and if 1 \textgreater b \textgreater b' \textgreater 0 any outcome is negative. 
+
 
 The expected value of the recurrence x\textsubscript{n} will be:
 
@@ -95,7 +96,7 @@ a. If b' \textgreater 1/b it will tend to infinity.
 
 b. If b' \textless 1/b it will tend to 0.
 
-c. If b'= 1/b it will be x\textsubscript{0}.
+c. If b'= 1/b it will follow a binomial distribution around x\textsubscript{0}.
 
 To start thinking about this, we`ll think about case c through the following exercise. 
 
@@ -103,15 +104,26 @@ Let's imagine a game on the number line, we are starting on 0, and then when we 
 
 Arithmetically, we start in 0, if we drew a we sum 1, if we drew a' we sum -1.
 
-And interesting thing is that in any sequence of events which we will represent with strings of the alphabet {a, a'}, any pair of a and a' on the sequence will anulate themselves by being equivalent to 0.
+We will represent any sequence of events by strings of the alphabet \{a, a'\}. Strings will be enclosed by ".
 
-So in any sequence of events the possible outcome in terms of the result will amount to just calculating the number of as or a's that result after taking out the pairs of aa's in the string.
+We will call this game G\textsubscript{+}.
 
-We will represent sequences of events with strings of the alphabet {a, a'} we will represent a string by enclosing it in ".
+Based on our definition, to calculate the value of the string in G\textsubscript{+} we start at 0 and then add +1 for every character a and -1 for every character a'.
+
+For example:
+
+"aaa" = 0 + 1 + 1 + 1 = 3
+
+"aa'a" = 0 + 1 -1 + 1 = 1
+
+"a'a'aa" = 0 -1 -1 + 1 + 1 = 0
+
+
+And interesting thing is that in any sequence of events any pair of the characters a and a' will annulate themselves. So in any sequence of events the possible outcome in terms of the result will amount to just calculating the number of "a"s or "a'"s left after taking out the pairs of "a" and "a'"s in the string.
 
 Examples, to calculate the value of the game we do: 
 
-"aa'aa'" = 0 + 1 - 1 + 1 -1 = 0 
+"aa'aa'" = "" = 0
 
 "aaaa'" = "aa" =  2
 
@@ -121,7 +133,10 @@ Examples, to calculate the value of the game we do:
 
 An interesting thing to notice first is that for any string of size n, if n is even then the results will be even and if n is odd then the result will be odd too.
 
-We will call this game G\textsubscript{+}.
+EXPLAINS HOW BEFORE RELATES TO PASCAL TRIANGLE
+
+THEN DO NEXT
+
 
 How is this related to case c in our original game (which we will call G\textsubscript{*}?
 
@@ -152,16 +167,18 @@ Examples:
 becomes b*b*b*b' = 1/b * 1/b * 1/b * b = b\textsuperscript{-2}
 
 It is evident that the results of G\textsubscript{+} are equivalent to the 
-exponentials of G\textsubscript{*} by simple arithmetics.
+exponentials of the results of G\textsubscript{*} by simple arithmetics.
 
------ I don't think this new game is a clear explanation... 
+----- This new game might not be a clear explanation... 
 
 -- Rant about b' = 1/b is the exact definition of a fair game.. go on about pascal triangle and binomial distribution
 
 
 OTHER CASES
 
-Now if b' \neq 1/b  then  b * b' = 1 + \epsilon 
+HERE: This is the trick, and this is what I should be arriving at.
+
+if b' $\neq$ 1/b  $\implies$  b * b' = 1 + $\epsilon$ .
 
 explain what that means in terms of the expected value of the recurrence
 
