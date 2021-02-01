@@ -95,7 +95,7 @@ If event e\textsubscript{l} as:
 
 x\textsubscript{n} = b\textsubscript{l} * x\textsubscript{n-1}
 
-Both events have equal probabilities of ocurring in any step, so P(e\textsubscript{w}) = P(e\textsubscript{l}) = 0.5\%. 
+Both events have equal probabilities of ocurring in any step, so P(e\textsubscript{w}) = P(e\textsubscript{l}) = 0.5. 
 
 We define e\textsubscript{w} to be the winning outcome of the step (meaning it increases the amount at play) and e\textsubscript{l} to be the losing outcome (meaning it decreases the amount). 
 
@@ -201,19 +201,21 @@ G\textsubscript{x}(b\textsubscript{w}b\textsubscript{l}) = x\textsubscript{0} * 
 
 ... ETC.. EXPLAIN THIS BETTER..
 
-Now if b\textsubscript{l} = 1/b\textsubscript{w} means that b\textsubscript{l} = b\textsubscript{w}\textsuperscript{-1} and b\textsubscript{w} * 1/b\textsubscript{w} = 1 .
+Now if b\textsubscript{l} = 1/b\textsubscript{w} $\implies$ b\textsubscript{l} = b\textsubscript{w}\textsuperscript{-1} .
 
-Which means that we can for this case we can reformulate the recurrence formula as:
+Which means that for this case we can reformulate the recurrence formula as:
 
 x\textsubscript{n} = x\textsubscript{0} * b\textsubscript{w}\textsuperscript{r}
 
 Where r $\in$ $\mathbb{N}$.  
 
+Also note that if b\textsubscript{l} = 1/b\textsubscript{w} $\implies$ b\textsubscript{w} * b\textsubscript{l} = 1 .
+
 EXPLAIN BELOW BETTER
 
 Let's reformulate our original game G\textsubscript{*} in terms of this new one G\textsubscript{+}.
 
-It is evident that in this case the results of G\textsubscript{+} are equivalent to the exponentials of the results of G\textsubscript{*}.
+It is evident that in this case the results of G\textsubscript{+} are equivalent to the exponentials of b\textsubscript{w} in the results of G\textsubscript{*} for this case.
 
 EXPLAIN HOW DISTRIBUTION ON G\textsubscript{+} relate to the distribution on G\textsubscript{*}.
 
