@@ -223,14 +223,30 @@ EXPLAIN HOW DISTRIBUTION ON G\textsubscript{+} relate to the distribution on G\t
 
 -- Rant about how is the exact definition of a fair game.. go on about pascal triangle and binomial distribution
 
+Also please consider the following, we could also represent any possible result of the game as:
 
-OTHER CASES
+x\textsubscript{n} = x\textsubscript{0} * (b\textsubscript{w} * b\textsubscript{l})\textsuperscript{x} * b\textsubscript{w}\textsuperscript{y} * b\textsubscript{l}\textsuperscript{z}
 
-HERE: This is the trick, and this is what I should be arriving at.
+Where 2x + z + y = n and either z or n equal zero.
 
-if b\textsubscript{l} $\neq$ 1/b\textsubscript{w}  $\implies$  b\textsubscript{w} * b\textsubscript{l} = 1 + $\epsilon$ .
+Considering the distribution of the results the expected value would be where 2x = n and z, y = 0.
 
-explain what that means in terms of the expected value of the recurrence
+Considering that in our case b\textsubscript{l} = 1/b\textsubscript{w} that means that b\textsubscript{l} * b\textsubscript{w} = 1.
+
+Then:
+
+x\textsubscript{n} = x\textsubscript{0} * (b\textsubscript{w} * b\textsubscript{l})\textsuperscript{x} * b\textsubscript{w}\textsuperscript{y} * b\textsubscript{l}\textsuperscript{z} = x\textsubscript{0} * (1)\textsuperscript{x} * b\textsubscript{w}\textsuperscript{y} * b\textsubscript{l}\textsuperscript{z}
+
+
+Now if b\textsubscript{l} $\neq$ 1/b\textsubscript{w}  $\implies$  b\textsubscript{w} * b\textsubscript{l} = 1 + $\epsilon$ .
+
+The distribution would be the same as the other case and our central value would be where 2x = n.
+
+But now, 
+
+x\textsubscript{n} = x\textsubscript{0} * (b\textsubscript{w} * b\textsubscript{l})\textsuperscript{x} * b\textsubscript{w}\textsuperscript{y} * b\textsubscript{l}\textsuperscript{z} = x\textsubscript{0} * (1 + $\epsilon$)\textsuperscript{x} * b\textsubscript{w}\textsuperscript{y} * b\textsubscript{l}\textsuperscript{z}
+
+If $\epsilon$ \textgreater 0 then the expected value will tend to infinity as n increases and if 0 \textgreater $\epsilon$ it will tend to zero.
 
 
 \section{multiple outcames with equal probability}
